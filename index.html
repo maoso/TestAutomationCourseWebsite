@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the Fruit Shop</h1>
+<div class="fruits">
+        <!-- Manzanas -->
+        <div class="fruit">
+            <img src="images/apple.jfif" alt="Apple">
+            <h2>Apple</h2>
+            <p>2.50 €/Kg</p>
+            <p>Crispy and delicious apples from the orchard.</p>
+            <label for="appleQuantity">Quantity:</label>
+            <input type="number" id="appleQuantity" min="0" value="0">
+            <button onclick="addToCart('Apple', 2.50, 'appleQuantity')">Add to Cart</button>
+        </div>
+        
+        <!-- Plátanos -->
+        <div class="fruit">
+            <img src="images/banana.jfif" alt="Banana">
+            <h2>Banana</h2>
+            <p>1.00 €/Kg</p>
+            <p>Sweet and ripe bananas for a healthy snack.</p>
+            <label for="bananaQuantity">Quantity:</label>
+            <input type="number" id="bananaQuantity" min="0" value="0">
+            <button onclick="addToCart('Banana', 1.00, 'bananaQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Naranjas -->
+        <div class="fruit">
+            <img src="images/orange.jfif" alt="Orange">
+            <h2>Orange</h2>
+            <p>1.50 €/Kg</p>
+            <p>Fresh and juicy oranges for a Vitamin C boost.</p>
+            <label for="orangeQuantity">Quantity:</label>
+            <input type="number" id="orangeQuantity" min="0" value="0">
+            <button onclick="addToCart('Orange', 1.50, 'orangeQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Peras -->
+        <div class="fruit">
+            <img src="images/pear.jfif" alt="Pear">
+            <h2>Pear</h2>
+            <p>2.00 €/Kg</p>
+            <p>Sweet and juicy pears for a delightful taste.</p>
+            <label for="pearQuantity">Quantity:</label>
+            <input type="number" id="pearQuantity" min="0" value="0">
+            <button onclick="addToCart('Pear', 2.00, 'pearQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Fresas -->
+        <div class="fruit">
+            <img src="images/strawberry.jfif" alt="Strawberry">
+            <h2>Strawberry</h2>
+            <p>3.00 €/Kg</p>
+            <p>Red and juicy strawberries for a sweet treat.</p>
+            <label for="strawberryQuantity">Quantity:</label>
+            <input type="number" id="strawberryQuantity" min="0" value="0">
+            <button onclick="addToCart('Strawberry', 3.00, 'strawberryQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Zanahorias -->
+        <div class="fruit">
+            <img src="images/carrot.jfif" alt="Carrot">
+            <h2>Carrot</h2>
+            <p>1.20 €/Kg</p>
+            <p>Fresh and crunchy carrots for a healthy snack.</p>
+            <label for="carrotQuantity">Quantity:</label>
+            <input type="number" id="carrotQuantity" min="0" value="0">
+            <button onclick="addToCart('Carrot', 1.20, 'carrotQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Uvas -->
+        <div class="fruit">
+            <img src="images/grape.jfif" alt="Grape">
+            <h2>Grape</h2>
+            <p>2.80 €/Kg</p>
+            <p>Sweet and delicious grapes for a refreshing taste.</p>
+            <label for="grapeQuantity">Quantity:</label>
+            <input type="number" id="grapeQuantity" min="0" value="0">
+            <button onclick="addToCart('Grape', 2.80, 'grapeQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Sandía -->
+        <div class="fruit">
+            <img src="images/watermelon.jfif" alt="Watermelon">
+            <h2>Watermelon</h2>
+            <p>0.80 €/Kg</p>
+            <p>Juicy and refreshing watermelon for hot days.</p>
+            <label for="watermelonQuantity">Quantity:</label>
+            <input type="number" id="watermelonQuantity" min="0" value="0">
+            <button onclick="addToCart('Watermelon', 0.80, 'watermelonQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Cerezas -->
+        <div class="fruit">
+            <img src="images/cherry.jfif" alt="Cherry">
+            <h2>Cherry</h2>
+            <p>2.70 €/Kg</p>
+            <p>Sweet and vibrant cherries for a delightful taste.</p>
+            <label for="cherryQuantity">Quantity:</label>
+            <input type="number" id="cherryQuantity" min="0" value="0">
+            <button onclick="addToCart('Cherry', 2.70, 'cherryQuantity')">Add to Cart</button>
+        </div>
+
+        <!-- Calabaza -->
+        <div class="fruit">
+            <img src="images/pumpkin.jfif" alt="Pumpkin">
+            <h2>Pumpkin</h2>
+            <p>1.80 €/Kg</p>
+            <p>Fresh and hearty pumpkin for a variety of recipes.</p>
+            <label for="pumpkinQuantity">Quantity:</label>
+            <input type="number" id="pumpkinQuantity" min="0" value="0">
+            <button onclick="addToCart('Pumpkin', 1.80, 'pumpkinQuantity')">Add to Cart</button>
+        </div>		
+	</div>
+	<div id="cart-icon" onclick="openCart()">
+		<img src="images/cart.png" alt="Carrito de compras">
+		<span id="cartItemCount">0</span>
+	</div>
+	<div id="cartPopup" class="popup">
+		<h1>Your Shopping Cart</h1>
+		<div class="cart" id="cart">
+			<!-- Shopping cart items will be displayed here -->
+		</div>
+		<p>Total: <span id="totalPrice">0.00</span> €</p>
+		<button id="CloseCart" onclick="closeCart()">Close</button>
+	</div>	
+    <button onclick="openCart()">View Shopping Cart</button>
+	
+	<button id="openContactPopup" onclick="openContactPopup()">Contact Us</button>
+	<button id="openContactPopupTopRight" class="contact-button-top-right" onclick="openContactPopup()">Contact Us</button>>
+<div id="contactPopup" class="popup">
+    <h1>Contact Us</h1>
+    <form id="contactForm" onsubmit="submitForm(event)">
+    <label for="contactTitle">Title:</label>
+    <input type="text" id="contactTitle" name="contactTitle">
+    <div class="error-message" id="contactTitleError">Please enter a title</div>
+    <label for="contactEmail">Email:</label>
+    <input type="email" id="contactEmail" name="contactEmail">
+    <div class="error-message" id="contactEmailError">Please enter a valid email address</div>
+    <label for="contactCategory">Category:</label>
+    <select id="contactCategory" name="contactCategory">
+        <option value="Search Information">Search Information</option>
+        <option value="Career query">Career query</option>
+        <option value="Fruit enquiry">Fruit enquiry</option>
+        <option value="Improvements">Improvements</option>
+        <option value="Other">Other</option>
+    </select>
+    <label for="contactText">Message:</label>
+    <textarea id="contactText" name="contactText"></textarea>
+    <div class="error-message" id="contactTextError">Please enter a message</div>
+    <button type="submit">Submit</button>
+    </form>
+    <button id="closeContactPopup" onclick="closeContactPopup()">Close</button>
+</div>
+	<script src="script.js"></script>
+</body>
+</html>
