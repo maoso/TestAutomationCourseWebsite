@@ -6,13 +6,17 @@ body {
 }
 
 h1 {
-    color: #333;
+	text-align: center;
+    margin: 20px;
+    font-family: Monserrat, sans-serif;
+    font-size: 3rem;
+    color: #4CAF50;
 }
 
 /* Estilos para el grid de frutas o verduras */
 .fruits {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin: 20px;
 }
@@ -33,12 +37,11 @@ a {
     font-weight: bold;
 }
 
-/* Estilos para el total */
 p {
     font-weight: bold;
 }
 
-/* Estilo para el popup */
+/* Style for shopping cart pop up */
 .popup {
 	display: none;
     position: fixed;
@@ -59,7 +62,7 @@ p {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
 	margin-left: 125px;
 }
@@ -206,29 +209,6 @@ button {
     border-radius: 5px;
 }
 
-/* Styles for the new "Contact Us" button at the top right */
-.contact-button-top-right {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 80px; 
-    z-index: 2;
-}
-
-.contact-button-top-right:hover {
-    background-color: #45a049;
-}
-
 /* Styles for error messages */
 .error-message {
     color: red;
@@ -238,7 +218,48 @@ button {
     font-size: 12px;
 }
 
+/* Styles for the search bar */
+#search-bar {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
 
+#product-search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex: 1; /* Expand to fill available space */
+}
 
+#product-search::placeholder {
+    color: #999; /* Placeholder text color */
+}
 
+#product-search:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.pagination button.active {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #007BFF;
+}
+
+.addToCartAnimation {
+    animation: addToCartAnimation 2s linear;
+}
+
+@keyframes addToCartAnimation {
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+}
 

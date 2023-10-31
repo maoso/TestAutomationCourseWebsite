@@ -1,10 +1,3 @@
-// Lista de frutas y sus precios
-const fruits = [
-    { name: 'Apple', price: 2.50 },
-    { name: 'Banana', price: 1.50 }
-    // Agrega más frutas aquí
-];
-
 const cartItems = {};
 
 // Función para agregar una fruta al carro de la compra
@@ -18,11 +11,23 @@ function addToCart(fruitName, price, quantityInputId) {
         } else {
             cartItems[fruitName] = { price, quantity };
         }
-	
-        updateCartDisplay();
+				
+        const productElement = document.createElement('div');
+        productElement.className = 'addToCartAnimation';
+        productElement.textContent = `${quantity}x ${fruitName}`;
 		
-		// Notificar al usuario
-        alert(`Added ${quantity} ${fruitName}(s) to the cart.`);
+		// Add the product element to the cart icon
+        const cartIcon = document.getElementById('cart-icon');
+        cartIcon.appendChild(productElement);
+		
+		setTimeout(() => {
+            productElement.classList.add('cart-added');
+            setTimeout(() => {
+                cartIcon.removeChild(productElement);
+            }, 2000);
+        }, 0);
+	
+        updateCartDisplay();	
 		quantityInput.value = 0;
     }
 }
@@ -31,7 +36,6 @@ function removeFromCart(productName) {
     if (cartItems[productName]) {
         delete cartItems[productName];
         updateCartDisplay();
-        alert(`Removed ${productName} from the cart.`);
     }
 }
 
@@ -188,3 +192,98 @@ function submitForm(event) {
     }
 }
 
+function searchProducts() {
+    const searchTerm = document.getElementById('product-search').value.toLowerCase();
+    fruits.forEach((fruit) => {
+        const fruitName = fruit.querySelector('h2').textContent.toLowerCase();
+        if (fruitName.includes(searchTerm) || searchTerm === '') {
+            fruit.style.display = 'block';
+        } else {
+            fruit.style.display = 'none';
+        }
+    });
+
+    // If the search term is empty, reset to the first page
+    if (searchTerm === '') {
+        navigateToPage(1);
+    }
+
+    // Update the pagination buttons
+    updateButtons();
+}
+
+	document.getElementById('product-search').addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        searchProducts();
+    }
+	});
+	
+// Pagination staff 
+let currentPage = 1;
+const itemsPerPage = 12;
+const fruits = document.querySelectorAll('.fruit');
+
+function showPage(page) {
+    fruits.forEach((fruit, index) => {
+        if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
+            fruit.style.display = 'block';
+        } else {
+            fruit.style.display = 'none';
+        }
+    });
+}
+
+// Updated navigateToPage function
+function navigateToPage(page) {
+  if (page >= 1 && page <= 3) {
+    currentPage = page;
+  }
+
+  showPage(currentPage);
+  updateButtons();
+}
+
+
+// Initial page display
+showPage(currentPage);
+
+// Event listeners for page navigation
+document.getElementById('prevPage').addEventListener('click', () => {
+    navigateToPage(currentPage-1);
+});
+
+document.getElementById('page1Button').addEventListener('click', () => {
+    navigateToPage(1);
+});
+
+document.getElementById('page2Button').addEventListener('click', () => {
+    navigateToPage(2);
+});
+
+document.getElementById('page3Button').addEventListener('click', () => {
+    navigateToPage(3);
+});
+
+document.getElementById('nextPage').addEventListener('click', () => {
+    navigateToPage(currentPage+1);
+});
+
+function updateButtons() {
+    document.getElementById('prevPage').disabled = currentPage === 1;
+    document.getElementById('page1Button').disabled = currentPage === 1;
+    document.getElementById('page2Button').disabled = currentPage === 2;
+    document.getElementById('page3Button').disabled = currentPage === 3;
+    document.getElementById('nextPage').disabled = currentPage === Math.ceil(fruits.length / itemsPerPage);
+	
+	for (let i = 1; i <= 3; i++) {
+        const button = document.getElementById(`page${i}Button`);
+        if (i === currentPage) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
+    }
+}
+
+// Initial button states
+updateButtons();
