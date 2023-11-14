@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Fruit and Vegetables Shop</h1>
-    <div id="search-bar">
-        <input type="text" id="product-search" placeholder="Search for products...">
-        <button id="search-button" onclick="searchProducts()">Search</button>
-	</div>
+    <header>
+        <h1 class="main-title">Welcome to the Fresh Market</h1>
+        <div id="search-bar">
+            <input type="text" id="product-search" placeholder="Search for products...">
+            <button id="search-button" onclick="searchProducts()">Search</button>
+        </div>
+    </header>
     <div class="fruits">
         <div class="fruit">
             <img src="images/apple.jfif" alt="Apple">
@@ -274,7 +276,7 @@
     </div>
 <div id="cart-icon" onclick="openCart()">
   <img src="images/cart.png" alt="Carrito de compras">
-  <span id="cartItemCount">0</span>
+  <span>0</span>
 </div>
 <div id="cartPopup" class="popup">
   <h2>Your Shopping Cart</h2>

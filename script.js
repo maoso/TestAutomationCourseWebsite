@@ -64,7 +64,7 @@ function removeFromCart(productName) {
 				}
 			});
 
-			cartItem.innerHTML = `<span>${itemName} ${item.price.toFixed(2)}€/Kg </span>`;
+			cartItem.innerHTML = `<span>${itemName} ${item.price.toFixed(2)} €/Kg </span>`;
 			cartItem.querySelector('span').appendChild(quantityInput);
 			const removeButton = document.createElement('button');
 			removeButton.textContent = 'Remove';
@@ -77,7 +77,7 @@ function removeFromCart(productName) {
 
         const total = calculateTotal();
         updateTotal(total);
-		document.getElementById('cartItemCount').textContent = uniqueProducts;
+		document.getElementById('cart-icon').querySelector('span').textContent = uniqueProducts;
     }
 
 // Función para calcular el total
